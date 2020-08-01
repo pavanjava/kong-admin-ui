@@ -1,0 +1,55 @@
+.app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    background: #f5f7f9;
+}
+
+.page{
+    width: 100%;
+}
+
+.sidebar {
+    width: 200px;
+    border: 1px solid #515a6e;
+    background: #515a6e;
+    color: #ffffff;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif !important;
+    cursor: pointer !important;
+    float: left;
+}
+
+.header {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #515a6e;
+    background-color: #515a6e !important;
+    color: #ffffff;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif !important;
+}
+
+.footer {
+    text-align: center;
+    background-color: #f5f7f9 !important;
+    color: #2c3e50 !important;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif !important;
+}
+
+.typography {
+    font-size: 10px !important;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif !important;
+}
+
+.MuiTypography-displayBlock a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.content {
+    width: auto;
+    height: auto;
+    margin-left: 200px;
+    padding-top: 10px;
+}
