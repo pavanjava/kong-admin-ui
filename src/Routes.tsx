@@ -4,8 +4,9 @@ import {Header} from './components/common/Header';
 import {Sidebar} from './components/common/Sidebar';
 import {Footer} from './components/common/Footer';
 import {KongInfo} from './components/kong-info/KongInfo';
-import {Services} from './components/services/Services';
+import {ApplicationServices} from './components/services/Services';
 import {Routes} from './components/routes/Routes';
+import {CreateOrEditService} from './components/services/CreateOrEditService';
 
 const items = [
     {name: 'kongInfo', label: 'Kong-Info'},
@@ -72,13 +73,27 @@ export const AppRoutes = () => (
                 )}
             />
             <Route
+                exact={true}
                 path='/Services'
                 render={() => (
                     <React.Fragment>
                         <Header/>
                         <div className={'page'}>
                             <Sidebar items={items}/>
-                            <Services/>
+                            <ApplicationServices/>
+                        </div>
+                        <Footer/>
+                    </React.Fragment>
+                )}
+            />
+            <Route
+                path='/Services/:id'
+                render={({match}) => (
+                    <React.Fragment>
+                        <Header/>
+                        <div className={'page'}>
+                            <Sidebar items={items}/>
+                            <CreateOrEditService match={match}/>
                         </div>
                         <Footer/>
                     </React.Fragment>

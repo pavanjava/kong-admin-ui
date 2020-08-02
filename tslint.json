@@ -12,6 +12,8 @@
       "options": [200]
     },
     "no-empty": true,
+    "no-restricted-globals":true,
+    "whitespace": false,
     "quotemark": [true, "single"],
     "new-parens": true,
     "no-arg": true,

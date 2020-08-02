@@ -1,14 +1,20 @@
 import {combineReducers} from 'redux';
-import {connectRouter, RouterState} from 'connected-react-router';
 import {History} from 'history';
 import {KongInfoState} from './kong-info/Types';
 import {KongInfoReducer} from './kong-info/Reducer';
+import {ServicesState} from './services/Types';
+import {ServicesReducer} from './services/Reducer';
 
 export interface ApplicationState {
-    router: RouterState,
-    kongInfoState: KongInfoState
+    kongInfoState: KongInfoState;
+    serviceState: ServicesState;
 }
 
 export const createRootReducer = (history: History): any => {
-    return combineReducers({router: connectRouter(history), kongInfoReducer: KongInfoReducer});
+    return combineReducers(
+        {
+            kongInfoReducer: KongInfoReducer,
+            servicesReducer: ServicesReducer
+        }
+    );
 }

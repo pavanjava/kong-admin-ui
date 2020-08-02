@@ -1,0 +1,1 @@
+export const serviceUrl = 'http://localhost:8001/services';
