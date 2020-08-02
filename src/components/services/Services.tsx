@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
-import '../../styles/application.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchAllServices} from '../../store/services/Actions';
 import {serviceUrl} from '../../store/BaseUrls';
-import {Services} from '../../store/services/Types';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
@@ -11,16 +9,23 @@ import {makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHea
 import {Delete, Edit} from '@material-ui/icons';
 import {Link} from 'react-router-dom';
 
+import '../../styles/application.css'
+
+interface DataTable {
+    path: string;
+    data: any;
+}
+
 const useStyles = makeStyles({
     table: {
         minWidth: 600,
     },
 });
 
-const DenseTable = (data: Services, next: string) => {
+const DenseTable:React.FC<DataTable> = ({path, data}) => {
     const classes = useStyles();
-    if (_.isArray(data.data)) {
-        const rows = data.data;
+    if (_.isArray(data)) {
+        const rows = data;
         return (
             <TableContainer component={Paper}>
                 <Table className={classes.table} size='small' aria-label='a dense table'>
@@ -39,7 +44,7 @@ const DenseTable = (data: Services, next: string) => {
                     <TableBody>
                         {rows.map((row: any) => (
                             <TableRow key={row.id}>
-                                <TableCell><Link to={`${window.location.pathname}/${row.id}`}><Edit/></Link><Link to={`${window.location.pathname}/${row.id}`}><Delete/></Link></TableCell>
+                                <TableCell><Link to={`${path}/${row.id}`}><Edit/></Link><Link to={`${path}/${row.id}`}><Delete/></Link></TableCell>
                                 <TableCell component='th' scope='row'>
                                     {row.host}
                                 </TableCell>
@@ -60,23 +65,19 @@ const DenseTable = (data: Services, next: string) => {
             <span>Please Wait while fetching services</span>
         )
     }
-
-
 }
 
-export const ApplicationServices = () => {
+export const ApplicationServices = (props: any) => {
 
     const dispatch = useDispatch();
     const services = useSelector((state: any) => state.servicesReducer);
-
     useEffect(() => {
         dispatch(fetchAllServices());
     }, [serviceUrl]);
-
     return (
         <React.Fragment>
             <div className={'content'}>
-                <DenseTable data={services.data} next={services.next}/>
+                <DenseTable path={props.match.url} data={services.data} />
             </div>
         </React.Fragment>
 

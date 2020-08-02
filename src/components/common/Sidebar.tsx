@@ -1,7 +1,12 @@
 import React from 'react';
-import {List, ListItem, ListItemText} from '@material-ui/core';
-import '../../styles/application.css';
 import {Link} from 'react-router-dom';
+import {List, ListItem, ListItemText} from '@material-ui/core';
+
+import '../../styles/application.css';
+
+const navigateTo = (page: string) => {
+    window.location.href = `http://${window.location.host}/${page}`;
+}
 
 export const Sidebar = (items: any) => {
     return (
@@ -9,7 +14,7 @@ export const Sidebar = (items: any) => {
             <List disablePadding={true} dense={true}>
                 {items.items.map(({label, name, subItems}: any) => (
                     <ListItem style={{paddingLeft: 18}} key={name} button={true}>
-                        <ListItemText><Link to={label} >{label}</Link></ListItemText>
+                        <ListItemText><Link to={label}>{label}</Link></ListItemText>
                         {Array.isArray(subItems) ? (
                             <List disablePadding={true}>
                                 {subItems.map((subItem) => (
@@ -25,6 +30,5 @@ export const Sidebar = (items: any) => {
                 ))}
             </List>
         </div>
-
     );
 }

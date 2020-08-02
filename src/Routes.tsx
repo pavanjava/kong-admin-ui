@@ -75,12 +75,12 @@ export const AppRoutes = () => (
             <Route
                 exact={true}
                 path='/Services'
-                render={() => (
+                render={({match}) => (
                     <React.Fragment>
                         <Header/>
                         <div className={'page'}>
                             <Sidebar items={items}/>
-                            <ApplicationServices/>
+                            <ApplicationServices match={match}/>
                         </div>
                         <Footer/>
                     </React.Fragment>

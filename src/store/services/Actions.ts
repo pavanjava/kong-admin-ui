@@ -29,10 +29,10 @@ export const fetchAllServices: AppThunk = () => {
     }
 }
 
-export const fetchServiceByName: AppThunk = (serviceName: string) => {
+export const fetchServiceById: AppThunk = (serviceId: string) => {
     return async (dispatch: Dispatch): Promise<Action> => {
         try {
-            const url = serviceUrl.concat(`/${serviceName}`);
+            const url = serviceUrl.concat(`/${serviceId}`);
             const serviceInfo = await getServiceDetails(url);
 
             return dispatch({
